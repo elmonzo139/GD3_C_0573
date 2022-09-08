@@ -1,0 +1,34 @@
+package com.example.gd3_c_0573
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewParent
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gd3_c_0573.entity.Dosen
+
+class RVDosenAdapter(private val data: Array<Dosen>) : RecyclerView.Adapter<RVDosenAdapter.viewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : viewHolder{
+
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_rvdosen_adapter, parent, false)
+        return viewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: viewHolder, position: Int){
+        val currentitem = data[position]
+        holder.tvNamaDosen.text = currentitem.name
+        holder.tvDetailsDosen.text = currentitem.pengajar
+    }
+
+    override fun getItemCount(): Int{
+        return data.size
+    }
+
+    class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val tvNamaDosen: TextView = itemView.findViewById(R.id.tv_nama_dosen)
+        val tvDetailsDosen: TextView = itemView.findViewById(R.id.tv_details_dosen)
+    }
+}
